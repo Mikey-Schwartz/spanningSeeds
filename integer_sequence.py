@@ -1,3 +1,6 @@
+# This is the python code to determine the answer to the problem. It does not interact with the C++ version. The python version is mainly for testing purposes
+#
+#
 import sys, math
 import array as arr
 # this file is not syntatically or semantically correct. Just a general outline. Mikey: Not anymore
