@@ -60,7 +60,7 @@ int findNumSeeds(int tap, const int *precomputedEvenOdd) {
 	int changedStates = 1;
 	int currentState = 1;
 	while (changedStates < (int) pow(2, tapLength)){
-		reqSeeds++;
+		++reqSeeds;
 		currentState = getIndex(pastStates, sizeof(pastStates)/sizeof(*pastStates), 0);
 		while(pastStates[currentState] == 0) {
 			changedStates +=1;
@@ -72,11 +72,11 @@ int findNumSeeds(int tap, const int *precomputedEvenOdd) {
 }
 
 int getNewState(int currentState, int power2, int tap, const int *precomputedEvenOdd) {
+	int firstBit = precomputedEvenOdd[tap & currentState];
 	if (currentState >= (int) pow(2, power2)) {
 		currentState -= (int) (pow(2, power2));
 	}
-	int ret = currentState * 2 + precomputedEvenOdd[tap & currentState];
-	return currentState * 2 + precomputedEvenOdd[tap & currentState];
+	return currentState * 2 + firstBit;
 }
 
 int * useCli() {
@@ -90,20 +90,12 @@ int * useCli() {
 
 int main() {
 	int l = 0;
-	int h = 100;
-	int * rs = findRangeSeeds(l, h);
-	for (int i = 0; i < h; i++) {
-		cout << i + 1 << "# " << rs[i] << endl;
-	}
-
-	/*int l = 0;
 	int h = 1024;
 	int * rs = findRangeSeeds(l, h);
-	for (int i = 0; i < 1025; i++) {
-		cout << i << "#: " << rs[i] << endl;
+	for (int i = 0; i < h; i++) {
+		cout << "tap " << i + 1 << " requires " << rs[i] << " restarts " << endl;
 	}
-	delete[] rs;
-	cout << "success" << endl;
-	return 0;*/
+
+	return 0;
 }
 
