@@ -1,1 +1,1 @@
-Currently newest version has semantic errors. Multithreadin will be added
+Newest version uses bitwise operators instead of manually instatiating base representations. Soon will be made functional as command line tool
