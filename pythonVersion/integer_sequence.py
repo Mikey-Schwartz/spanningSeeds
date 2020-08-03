@@ -3,7 +3,6 @@
 #
 import sys, math
 import array as arr
-# this file is not syntatically or semantically correct. Just a general outline. Mikey: Not anymore
 
 def convert_to_base(num, base):
     representation = []
