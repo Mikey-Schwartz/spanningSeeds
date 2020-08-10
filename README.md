@@ -1,5 +1,6 @@
 # spanningSeeds
-Pseudorandom number generator algorithm - Determine the number of seeds needed to reach every possible generated number for a given tap, or set of taps
+Number of output sequences from a fibonacci linear feedback shift register whose feedback polynomial coefficients (excluding the constant term) correspond to the binary representation of n
+Can be thought of as a Pseudorandom number generator algorithm - Determine the number of seeds needed to reach every possible generated number for a given tap, or set of taps
 # explanation 
 See background, if you are not familiar with pseudorandom number generation
 Determine the number of different seed resets needed to generate all possible numbers. So if a number generation enters a cycle (generates a number a second time),
