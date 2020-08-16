@@ -1,5 +1,6 @@
 Newest version uses bitwise operators instead of manually instatiating base representations. Soon will be made functional as command line tool
 Multithreading will be added
 Ran 10,000 elements in 7 seconds and 100,000 in 12:30. This is a vast speedup 13X from original cpp version, and 51X from original python code
-Seems to be a more pronounced difference for larger problem
-First Command line tool finished, first parralel version also finished. Code is now fully functional
+Seems to be a more pronounced difference for larger problems
+Multithreading/parralelism added
+Command line tool finished. Ready for use
