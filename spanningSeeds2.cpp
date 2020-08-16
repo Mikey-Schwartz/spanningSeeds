@@ -5,8 +5,6 @@
 // Copyright   : MIT License
 //============================================================================
 
-//#include "spanningSeeds2.h"
-#include "threading.h"
 #include <iostream>
 #include <cmath>
 using std::cout; using std::endl; using std::cin; using std::log2; using std::pow;
@@ -45,17 +43,15 @@ int getIndex(const int *array, int length, int target) {
 
 int * findRangeSeeds(int lowerBound, int upperBound, const int *precomputedEvenOdd) {
 	int *output = new int[upperBound - lowerBound + 1];  //change
-	if (lowerBound == 0) {
-		++lowerBound;
-	}
-	//const int *precomputedEvenOdd = generateEvenOdd(upperBound);
-	for (int n = lowerBound; n <= upperBound - lowerBound + 1; ++n) {
+	for (int n = lowerBound; n <= upperBound; ++n) {
 		output[n - lowerBound] = findNumSeeds(n, precomputedEvenOdd);
 	}
 	return output;
+
 }
 
 int findNumSeeds(int tap, const int *precomputedEvenOdd) {
+	if (tap == 0) { return 1;};
 	int tapLength = (int) (log2(tap)) + 1;
 	int pastStates[(int) pow(2, tapLength)]{0};
 	int reqSeeds = 1;
@@ -81,32 +77,3 @@ int getNewState(int currentState, int power2, int tap, const int *precomputedEve
 	}
 	return currentState * 2 + firstBit;
 }
-/*
-int * useCli() {
-	int lowerBound, upperBound;
-	cout << "Input lower bound \n >>>" << endl;
-	cin >> lowerBound;
-	cout << "Input upper bound \n >>> " << endl;
-	cin >> upperBound;
-	return findRangeSeeds(lowerBound, upperBound);
-}*/
-
-int main() {
-	cout << getTotalWork(9) << " is total work" << endl;
-	int *z = splitUpJob(9, 4);
-	for (int i = 0; i < 4; ++i) {
-		cout << z[i] << endl;
-	}
-
-	/*
-	int l = 0;
-	int h = 1024;
-	const int precomputedEvenOdd = generateEvenOdd(upperBound);
-	int * rs = findRangeSeeds(l, h);
-	for (int i = 0; i < h; i++) {
-		cout << "tap " << i + 1 << " requires " << rs[i] << " restarts " << endl;
-	}
-
-	return 0;*/
-}
-
