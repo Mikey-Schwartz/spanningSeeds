@@ -4,4 +4,4 @@ cd ~/Downloads
 git clone https://github.com/AvrahamKahan123/spanningSeeds/
 cd spanningSeeds/newVersion
 g++ -pthread CLI.cpp errorMessages.cpp spanningSeeds2.cpp threading.cpp -o registerSequences 
-sudo mv numberSequences /usr/local/bin/
+sudo mv registerSequences /usr/local/bin/
