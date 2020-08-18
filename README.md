@@ -1,6 +1,7 @@
 # spanningSeeds
 Number of output sequences from a fibonacci linear feedback shift register whose feedback polynomial coefficients (excluding the constant term) correspond to the binary representation of n
 Can be thought of as a Pseudorandom number generator algorithm - Determine the number of seeds needed to reach every possible generated number for a given taps, or set of taps
+ENTRY POINT FOR PROGRAM FOR NEWEST VERSION IS CLI.cpp 
 # usage 
 type registerSequences --help to see all command line options
 # explanation 
