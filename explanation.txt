@@ -1,0 +1,23 @@
+Q. What is this project?
+A. This project computes the number of generated output streams for Fibonacci feedback shift registers. Registers of this type work like this: a set of taps is selected
+(any integer), and then a seed is selected (any other integer). The first number output is the seed. The next number output is computed by:
+1. Turning the last number (the seed) to its binary representation, and shifting each bit one to the left, getting rid of the leftmost (highest) bit
+2. Set the first bit in it as the dot product between the taps and the last number modulo 2. 
+3. repeat for next numbers
+4. if the number generated has already been generated from that seed,we have ended a cycle and we can end the stream. If there are more possible numbers to be generated
+(a tap can for only output a number two times itself - 1 or smaller because it must have the same number of bits), a new seed is provided that has not been generated yet
+
+Q. Are there any practical uses?
+A. Maybe! Shift registers are important in cryptography and random number generation. We (Avraham Kahan and Mikey Schwartz) have seen all sorts of wierd things
+while looking at the sequence, including Walsh Matrices (seen if you manipulate the series of answers generated for a range of taps a certain way), roots for 
+irreducible polynomials (the number sequences mirrors closely roots for x^(tap) + x(tap-1)... 1), etc. Its still an open work in progress
+
+Q. Whats with the lookup table? How was this code optimized?
+A. In our older versions (olderVersion, and Python version) the program manually converted the numbers to their binary representations as a Linked List.
+However, I realized we could precompute the dot-product of the taps and seed mod 2 as just counting the number of 1s and 0s in the number generated from using 
+the bitwise AND operator on the taps and seeds. The lookup table precomputes this. That led to a 13X (!) speedup in the run time. It also employs multithreading
+
+Q. Why does the code use mostly features found in C? Why not use C in place of C++ then?
+A. Personally, I (Avraham Kahan) prefer C because C++ can be somewhat convoluted, whereas in C theres usually only one really good way to do things. C++ was only 
+used because its easier to multithread in it. Thats why the program has C style in C++ code
+
