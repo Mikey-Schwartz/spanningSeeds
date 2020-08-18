@@ -17,7 +17,10 @@ A. In our older versions (olderVersion, and Python version) the program manually
 However, I realized we could precompute the dot-product of the taps and seed mod 2 as just counting the number of 1s and 0s in the number generated from using 
 the bitwise AND operator on the taps and seeds. The lookup table precomputes this. That led to a 13X (!) speedup in the run time. It also employs multithreading
 
+Q. What does the name mean? "Spanning seeds"?
+A. At the beginning we were not sure what exactly this sequence was. One thing this reminded me of was spaces in linear algebra (with the seeds/restarts as the bases of the space), so I named it after that idea. As it turns out, they probably aren't related
+
 Q. Why does the code use mostly features found in C? Why not use C in place of C++ then?
-A. Personally, I (Avraham Kahan) prefer C because C++ can be somewhat convoluted, whereas in C theres usually only one really good way to do things. C++ was only 
-used because its easier to multithread in it. Thats why the program has C style in C++ code
+A. Personally, I find C style to be more readable and less convoluted. C++ was only used because its easier to multithread in it. Thats why the program has C style in C++ code
+
 
